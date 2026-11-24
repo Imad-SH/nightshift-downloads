@@ -288,7 +288,7 @@
   .closing .act a.sum { color: #dbe2f5; font-size: 14px; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
 
   footer { background: var(--deep); color: #8f9bc8; padding: 80px 0 40px; font-size: 14.5px; }
-  footer .cols { display: grid; grid-template-columns: 1.4fr 0.8fr 0.8fr; gap: 40px; }
+  footer .cols { display: grid; grid-template-columns: 1.4fr 0.8fr 0.8fr 0.8fr; gap: 40px; }
   footer .ns-logo { height: 54px; width: auto; }
   footer .about { margin-top: 22px; max-width: 36ch; }
   footer .maker { display: flex; align-items: center; gap: 12px; margin-top: 26px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #8f9bc8; }
@@ -353,7 +353,9 @@
   .closing .act a.talk { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-weight: 600; font-size: 15px; text-decoration: none; }
   .closing .act a.talk svg { color: #c6e9e3; transition: transform 500ms var(--ease); }
   .closing .act a.talk:hover svg { transform: translateX(4px); }
-  .closing .act a.talk:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+  .closing .act a.talk:focus-visible, .closing .act a.mail:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+  .closing .act a.mail { margin-top: -8px; font: 500 13px var(--mono); color: #c6e9e3; text-decoration: none; }
+  .closing .act a.mail:hover { text-decoration: underline; text-underline-offset: 4px; }
 
   /* Entry motion (only when scripts run: content stays visible otherwise) */
   .js .reveal { opacity: 0; transform: translateY(32px); filter: blur(8px); transition: opacity 1100ms var(--ease), transform 1100ms var(--ease), filter 1100ms var(--ease); }
@@ -792,6 +794,7 @@
           </a>
           <a class="talk" href="mailto:sales@bluesec.ma?subject=Nightshift%20product%20enquiry">Talk to BlueSec
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+          <a class="mail" href="mailto:sales@bluesec.ma?subject=Nightshift%20product%20enquiry">sales@bluesec.ma</a>
           <a class="sum" href="https://github.com/Imad-SH/nightshift-downloads/releases/download/v1.0.0/nightshift-1.0.0.tar.gz.sha256" download>SHA-256 checksum file</a>
         </div>
       </div>
@@ -823,6 +826,12 @@
           <li>Version 1.0.0</li>
           <li>Released 2026-10-24</li>
           <li><a href="https://github.com/Imad-SH/nightshift-downloads/releases/download/v1.0.0/nightshift-1.0.0.tar.gz.sha256" download>Checksum file</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:sales@bluesec.ma?subject=Nightshift%20product%20enquiry">sales@bluesec.ma</a></li>
         </ul>
       </div>
     </div>
