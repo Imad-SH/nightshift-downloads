@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Download Nightshift 1.0.0</title>
-<meta name="description" content="Download Nightshift 1.0.0, the AI analyst that never clocks out, and install it on your own Linux server.">
+<title>Nightshift — AI investigation assistant by BlueSec</title>
+<meta name="description" content="Nightshift is a self-hosted AI triage assistant that investigates SIEM alerts and prepares reasoned recommendations for analyst review.">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,7 +82,7 @@
   .btn:active { transform: scale(0.985); }
   .btn .ico { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid rgba(255, 255, 255, 0.28); transition: transform 600ms var(--ease), background 600ms var(--ease); }
   .btn:hover .ico { transform: translateY(2px); background: rgba(255, 255, 255, 0.1); }
-  .btn.small { padding: 11px 16px 11px 18px; font-size: 14px; box-shadow: none; }
+  .btn.small { padding: 11px 16px 11px 18px; font-size: 14px; box-shadow: none; white-space: nowrap; flex: none; }
   .btn.light { background: #fff; color: var(--navy); }
   .btn.light::before { background: linear-gradient(115deg, var(--mint), #fff 70%); }
   .btn.light .ico { border-color: var(--line); }
@@ -298,6 +298,64 @@
   footer a:hover { color: #fff; }
   footer .legal { margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; }
 
+  /* The operational gap: the numbered points, on a light background */
+  .points.light { margin-top: 0; border-top-color: var(--line); }
+  .points.light div + div { border-left-color: var(--line); }
+  .points.light .n { color: var(--blue); }
+  .points.light h3 { color: var(--navy); }
+  .points.four { grid-template-columns: repeat(4, 1fr); }
+  .frame .cap { padding: 12px 6px 2px; font: 400 12.5px/1.5 var(--mono); color: #8b97c2; }
+
+  /* Workflow: five steps on one line, then the human-in-the-loop note */
+  .flow { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 28px; }
+  .flow li { position: relative; padding-top: 66px; }
+  .flow li::before { content: ""; position: absolute; top: 22px; left: 44px; right: -28px; height: 1px; background: var(--line); }
+  .flow li:last-child::before { display: none; }
+  .flow .node { position: absolute; top: 0; left: 0; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); background: #fff; font: 500 12.5px var(--mono); color: var(--navy); }
+  .flow li:last-child .node { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .flow h3 { font-size: 19px; font-weight: 500; letter-spacing: -0.01em; }
+  .flow p { margin-top: 8px; font-size: 15px; }
+  .human { margin-top: 64px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 26px; align-items: center; padding: 30px 34px; background: var(--mint); border-left: 2px solid var(--teal); }
+  .human svg { color: var(--navy); }
+  .human .k { font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--blue); }
+  .human h3 { margin-top: 6px; font-size: 21px; font-weight: 500; letter-spacing: -0.015em; }
+  .human p { margin-top: 6px; font-size: 15.5px; max-width: 74ch; }
+
+  /* Division of work: one grid, so each row lines up across both columns */
+  .division { background: var(--soft); }
+  .split { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); }
+  .split > * { margin: 0; padding: 18px 36px; display: flex; gap: 14px; align-items: flex-start; font-size: 16px; }
+  .split .sl { background: #fff; color: var(--deep); }
+  .split .sr { background: var(--deep); color: #e8ecfb; }
+  .split h3 { padding-top: 32px; padding-bottom: 12px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; }
+  .split h3.sl { color: var(--blue); }
+  .split h3.sr { color: var(--teal); }
+  .split div.sl { border-top: 1px solid var(--line); }
+  .split div.sr { border-top: 1px solid rgba(255, 255, 255, 0.1); }
+  .split > :nth-last-child(-n+2) { padding-bottom: 30px; }
+  .split div.sl::before { content: ""; width: 7px; height: 7px; margin-top: 9px; background: var(--blue); flex: none; }
+  .split svg { flex: none; margin-top: 3px; color: var(--teal); }
+
+  /* Deployment model band */
+  .deploy { background: var(--navy); color: #c9d2f2; overflow: hidden; }
+  .deploy h2 { color: #fff; }
+  .deploy h2 .lt { color: #a9b7ea; }
+  .deploy .head p { color: #c9d2f2; }
+  .cells.dark { grid-template-columns: repeat(4, 1fr); border-color: rgba(255, 255, 255, 0.12); }
+  .cells.dark .cell { border-color: rgba(255, 255, 255, 0.12); }
+  .cells.dark .cell:hover { background: rgba(255, 255, 255, 0.04); }
+  .cells.dark .cell .n { color: #a9b7ea; }
+  .cells.dark .cell svg { color: var(--teal); }
+  .cells.dark .cell h3 { color: #fff; }
+  .cells.dark .cell p { color: #c9d2f2; }
+
+  .closing p.meta { font: 500 12.5px var(--mono); letter-spacing: 0.04em; color: #c6d2f0; margin-top: 16px; }
+  .closing .box > div:first-child p { max-width: 58ch; }
+  .closing .act a.talk { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-weight: 600; font-size: 15px; text-decoration: none; }
+  .closing .act a.talk svg { color: #c6e9e3; transition: transform 500ms var(--ease); }
+  .closing .act a.talk:hover svg { transform: translateX(4px); }
+  .closing .act a.talk:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
   /* Entry motion (only when scripts run: content stays visible otherwise) */
   .js .reveal { opacity: 0; transform: translateY(32px); filter: blur(8px); transition: opacity 1100ms var(--ease), transform 1100ms var(--ease), filter 1100ms var(--ease); }
   .js .reveal.in { opacity: 1; transform: none; filter: none; }
@@ -309,10 +367,17 @@
   }
 
   @media (max-width: 1080px) {
+    /* Five section links no longer fit beside both logos and the button */
+    .menu { display: none; }
+    .top .wrap { justify-content: space-between; }
     .release { grid-template-columns: 1fr 1fr 1fr; }
     .release .file, .release .sha { grid-column: 1 / -1; border-right: 0; }
     .release > div { border-bottom: 1px solid var(--line); }
     .docs { grid-template-columns: 1fr 1fr; }
+    .points.four { grid-template-columns: 1fr 1fr; }
+    .points.four div:nth-child(odd) { padding-left: 0; border-left: 0; }
+    .points.four div:nth-child(n+3) { border-top: 1px solid rgba(255, 255, 255, 0.12); margin-top: 30px; }
+    .cells.dark { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 900px) {
     .menu { display: none; }
@@ -325,6 +390,15 @@
     .points { grid-template-columns: 1fr; }
     .points div + div { padding-left: 0; border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.12); }
     .points div { padding-bottom: 28px; }
+    .points.four { grid-template-columns: 1fr; }
+    .points.four div, .points.four div:nth-child(n+3) { padding: 30px 0 28px; border-left: 0; margin-top: 0; }
+    .points.four div + div { border-top: 1px solid rgba(255, 255, 255, 0.12); }
+    .points.light div + div { border-top-color: var(--line); }
+    .flow { grid-template-columns: 1fr; gap: 0; }
+    .flow li { padding: 0 0 30px 70px; min-height: 44px; }
+    .flow li::before { top: 44px; bottom: 0; left: 22px; right: auto; width: 1px; height: auto; }
+    .flow h3 { padding-top: 9px; }
+    .human { margin-top: 34px; }
     section { padding: 88px 0; }
     .closing { padding-bottom: 88px; }
   }
@@ -336,7 +410,12 @@
     .hero { padding-top: 12px; }
     .night { border-radius: 20px; padding: 36px 20px 40px; }
     .lede { font-size: 16.5px; }
-    .cells, .docs, .checks { grid-template-columns: 1fr; }
+    .cells, .docs, .checks, .cells.dark { grid-template-columns: 1fr; }
+    .split { grid-template-columns: 1fr; }
+    .split .sl { order: 1; }
+    .split .sr { order: 2; }
+    .split > * { padding-left: 22px; padding-right: 22px; }
+    .human { grid-template-columns: 1fr; gap: 14px; padding: 26px 22px; }
     .release { grid-template-columns: 1fr; }
     .release > div { border-right: 0; }
     .step { padding: 30px 22px; }
@@ -358,6 +437,7 @@
     </a>
     <nav class="menu" aria-label="Sections">
       <a href="#product">Product</a>
+      <a href="#workflow">Workflow</a>
       <a href="#requirements">Requirements</a>
       <a href="#install">Install</a>
       <a href="#upgrade">Upgrade</a>
@@ -375,19 +455,20 @@
         <div class="grid">
           <div>
             <p class="tag reveal"><span class="dot" aria-hidden="true"></span>Nightshift 1.0.0<span class="sep" aria-hidden="true"></span>Linux server</p>
-            <h1 class="reveal d1">Install. Connect. <em>Triage.</em></h1>
-            <p class="lede reveal d2"><strong>Nightshift, the AI analyst that never clocks out,</strong> runs on your own Linux server next to your SIEM. One package, one command, and your analysts only need a browser.</p>
+            <h1 class="reveal d1">Nightshift handles the <em>triage.</em><br>You make the call.</h1>
+            <p class="lede reveal d2"><strong>AI agents investigate each incoming alert so analysts do not have to start from scratch.</strong> They extract the key indicators, check threat intelligence and prepare a reasoned verdict for review.</p>
             <div class="hero-ctas reveal d3">
               <a class="hbtn" id="download" href="https://github.com/Imad-SH/nightshift-downloads/releases/download/v1.0.0/nightshift-1.0.0.tar.gz" download>Download Nightshift 1.0.0
                 <span class="ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 21h14"/></svg></span>
               </a>
-              <a class="hlink" href="#install">Installation steps
+              <a class="hlink" href="mailto:sales@bluesec.ma?subject=Nightshift%20product%20enquiry">Talk to BlueSec
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
               </a>
             </div>
             <ul class="facts reveal d4">
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>Ubuntu, Debian, RHEL, Rocky, Alma</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>4 cores, 8 GB memory, 40 GB disk minimum</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>Runs on your own Linux server</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>Local AI model supported</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5.5c0 4.4 3 7.9 7 9.5 4-1.6 7-5.1 7-9.5V6Z"/><path d="m9 12 2 2 4-4"/></svg>No automatic response actions</li>
             </ul>
           </div>
 
@@ -413,25 +494,133 @@
     </div>
   </div>
 
+  <section id="gap">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow reveal">The operational gap</span>
+        <div class="reveal d1">
+          <h2>Alert triage takes time <span class="lt">your analysts need for decisions.</span></h2>
+          <p>Before an analyst can decide what an alert means, they must extract indicators, look for context and check whether those indicators are known threats. That is the first-pass work Nightshift takes on.</p>
+        </div>
+      </div>
+      <div class="points light">
+        <div class="reveal"><div class="n">01</div><h3>Alerts keep arriving</h3><p>Every alert needs an initial look, whether it becomes a real incident or not.</p></div>
+        <div class="reveal d1"><div class="n">02</div><h3>Evidence takes time</h3><p>Analysts gather indicators and move between the SIEM and threat-intelligence sources before they can assess the alert.</p></div>
+        <div class="reveal d2"><div class="n">03</div><h3>Decisions should stay human</h3><p>The analyst still needs the evidence and context to make the final call with confidence.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="product on-dark" id="product">
     <div class="wrap">
       <div class="head">
         <span class="eyebrow reveal">The product</span>
         <div class="reveal d1">
-          <h2>What your analysts <span class="lt">open every morning.</span></h2>
-          <p>Every alert from your SIEM, already investigated: indicators checked against threat intelligence, a clear verdict with its evidence, and real threats escalated to your case-management system.</p>
+          <h2>Give every alert <span class="lt">an investigation-ready recommendation.</span></h2>
+          <p>Nightshift receives alerts from your SIEM, extracts the relevant indicators of compromise, checks them against threat intelligence sources, and gives the analyst a verdict with its reasons. The analyst reviews it and makes the final decision.</p>
         </div>
       </div>
       <div class="frame reveal">
         <div class="window">
           <div class="bar"><i></i><i></i><i></i><span>https://soc.your-company.local</span></div>
-          <img src="preview.png" alt="Nightshift live alert dashboard with an investigation open" width="1440" height="900" loading="lazy">
+          <img src="preview.png" alt="Nightshift investigation workspace showing an alert under analyst review" width="1440" height="900" loading="lazy">
+        </div>
+        <p class="cap">Nightshift investigation workspace &middot; alert context and recommendation ready for analyst review</p>
+      </div>
+      <div class="points four">
+        <div class="reveal"><div class="n">01</div><h3>AI-led investigation</h3><p>Agents pull out and assess the important indicators in each alert.</p></div>
+        <div class="reveal d1"><div class="n">02</div><h3>Reasoned verdicts</h3><p>Malicious, suspicious or false positive, with the evidence behind it.</p></div>
+        <div class="reveal d2"><div class="n">03</div><h3>Human final decision</h3><p>The analyst validates the recommendation and chooses the next action.</p></div>
+        <div class="reveal d3"><div class="n">04</div><h3>Your infrastructure</h3><p>Run it on your server, with a local AI model if you choose.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="workflow">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow reveal">How Nightshift works</span>
+        <div class="reveal d1">
+          <h2>AI handles the investigation. <span class="lt">Analysts keep control.</span></h2>
+          <p>A clear, accountable division of work: Nightshift prepares the evidence and recommendation; your team owns the decision and response.</p>
         </div>
       </div>
-      <div class="points">
-        <div class="reveal"><div class="n">01</div><h3>Instant triage</h3><p>Every alert analyzed within seconds of arriving, nights and weekends included.</p></div>
-        <div class="reveal d1"><div class="n">02</div><h3>Clear verdicts</h3><p>Malicious, suspicious or false positive, with confidence, evidence and MITRE ATT&amp;CK mapping.</p></div>
-        <div class="reveal d2"><div class="n">03</div><h3>Your infrastructure</h3><p>Runs on your server. Use a local AI model and no alert data leaves your network.</p></div>
+      <ol class="flow">
+        <li class="reveal"><span class="node">01</span><h3>Alert arrives</h3><p>Nightshift receives an alert from the connected SIEM.</p></li>
+        <li class="reveal d1"><span class="node">02</span><h3>Indicators are extracted</h3><p>Its AI agents identify the key indicators of compromise within the alert.</p></li>
+        <li class="reveal d2"><span class="node">03</span><h3>Threat intelligence is checked</h3><p>Those indicators are checked against the threat-intelligence sources you configure.</p></li>
+        <li class="reveal d3"><span class="node">04</span><h3>A verdict is explained</h3><p>The analyst receives a recommendation with the reasons supporting it.</p></li>
+        <li class="reveal d4"><span class="node">05</span><h3>The analyst decides</h3><p>A human reviews the recommendation and determines the next action.</p></li>
+      </ol>
+      <div class="human reveal">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><path d="m16 11 2 2 4-4"/></svg>
+        <div>
+          <div class="k">Human-in-the-loop</div>
+          <h3>Assistance, not replacement</h3>
+          <p>Nightshift never blocks or isolates anything itself. An analyst owns the decision, and cases open automatically only under escalation rules your team controls.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="division" id="division">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow reveal">A clear division of work</span>
+        <div class="reveal d1">
+          <h2>Nightshift reduces the workload. <span class="lt">Your SOC retains authority.</span></h2>
+          <p>See exactly which first-pass work Nightshift takes off your team&rsquo;s shoulders, and which authority stays with your SOC.</p>
+        </div>
+      </div>
+      <div class="split reveal">
+        <h3 class="sl">Nightshift handles</h3>
+        <h3 class="sr">The analyst owns</h3>
+        <div class="sl">Extracting the relevant indicators of compromise</div>
+        <div class="sr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Reviewing the evidence in the context of the organization</div>
+        <div class="sl">Checking indicators against configured threat intelligence</div>
+        <div class="sr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Assessing risk and deciding the next action</div>
+        <div class="sl">Preparing a reasoned AI recommendation</div>
+        <div class="sr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Accepting, challenging or rejecting that recommendation</div>
+        <div class="sl">Keeping first-pass investigation moving as alerts arrive</div>
+        <div class="sr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Accountability for the final decision and response</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="deploy on-dark" id="deployment">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow reveal">Deployment model</span>
+        <div class="reveal d1">
+          <h2>Built to fit beside <span class="lt">the tools your SOC already trusts.</span></h2>
+          <p>Nightshift supports the operational workflow around your SIEM. It runs on one physical or virtual Linux server; analysts access it in a browser, from any computer on your network.</p>
+        </div>
+      </div>
+      <div class="cells dark">
+        <div class="cell reveal">
+          <div class="n">01</div>
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>
+          <h3>Self-hosted</h3>
+          <p>Deploy in your data center or cloud, on infrastructure you control.</p>
+        </div>
+        <div class="cell reveal d1">
+          <div class="n">02</div>
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7V3M15 7V3"/><path d="M6 7h12v4a6 6 0 0 1-12 0Z"/><path d="M12 17v4"/></svg>
+          <h3>SIEM-connected</h3>
+          <p>Connect the detection stack your analysts already use.</p>
+        </div>
+        <div class="cell reveal d2">
+          <div class="n">03</div>
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>
+          <h3>AI choice</h3>
+          <p>Choose your AI provider or run a local model on your own hardware.</p>
+        </div>
+        <div class="cell reveal d3">
+          <div class="n">04</div>
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="1.5"/><path d="M3 8h18M7 6h.01M10 6h.01"/></svg>
+          <h3>Browser-based</h3>
+          <p>Nothing to install on analyst computers. Just a modern browser.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -442,14 +631,14 @@
         <span class="eyebrow reveal">Before you start</span>
         <div class="reveal d1">
           <h2>One Linux server. <span class="lt">Nothing on analysts' computers.</span></h2>
-          <p>Physical or virtual, in your data center or your cloud. Here is what it needs.</p>
+          <p>Physical or virtual, in your data center or your cloud. These are the requirements for a smooth deployment.</p>
         </div>
       </div>
       <div class="cells">
         <div class="cell reveal">
           <div class="n">01</div>
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>
-          <h3>Operating system</h3>
+          <h3>Supported operating systems</h3>
           <p>A recent 64-bit Linux distribution.</p>
           <div class="chips"><span class="chip">Ubuntu 22.04 / 24.04</span><span class="chip">Debian 12</span><span class="chip">RHEL 9</span><span class="chip">Rocky 9</span><span class="chip">Alma 9</span></div>
         </div>
@@ -468,7 +657,7 @@
           <div class="n">03</div>
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5Z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/></svg>
           <h3>Docker</h3>
-          <p>Docker Engine 24 or later with the Compose plugin. Step 01 below installs it.</p>
+          <p>Docker Engine 24 or later, with the Compose plugin. Step 01 below installs it.</p>
         </div>
         <div class="cell reveal">
           <div class="n">04</div>
@@ -480,13 +669,13 @@
           <div class="n">05</div>
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
           <h3>Access</h3>
-          <p>An account with <code>sudo</code> rights, and a fixed address for the server: a DNS name or an IP.</p>
+          <p><code>sudo</code> access, and a fixed DNS name or IP address for the server.</p>
         </div>
         <div class="cell reveal d2">
           <div class="n">06</div>
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="1.5"/><path d="M3 8h18M7 6h.01M10 6h.01"/></svg>
           <h3>Analysts</h3>
-          <p>A modern browser. Nothing to install, from any computer on your network.</p>
+          <p>A modern browser for SOC managers and analysts, on any computer on your network. No desktop software to install.</p>
         </div>
       </div>
     </div>
@@ -497,7 +686,7 @@
       <div class="rail">
         <span class="eyebrow reveal">Installation</span>
         <h2 class="reveal d1">Up and running <span class="lt">in four steps.</span></h2>
-        <p class="reveal d2">Run these commands on the server. Most installations take about ten minutes from start to first sign-in.</p>
+        <p class="reveal d2">Run these commands on the server. Most installations take about ten minutes from first command to first sign-in.</p>
         <ol class="reveal d3">
           <li><a href="#step-1"><span>01</span>Install Docker</a></li>
           <li><a href="#step-2"><span>02</span>Download and verify</a></li>
@@ -529,33 +718,33 @@
           <h3>Download and verify the package</h3>
           <p>The checksum proves the package arrived complete and unmodified.</p>
           <div class="term"><div class="bar"><span>Terminal</span></div><pre data-cmd="download"></pre></div>
-          <p class="note"><strong>Server without internet access?</strong> Download both files on any computer with the buttons above, then copy them to the server, for example with <code>scp</code> or a USB drive.</p>
+          <p class="note"><strong>Server without internet access?</strong> Download both files elsewhere, then copy them to the server using <code>scp</code> or a USB drive.</p>
         </article>
 
         <article class="step reveal" id="step-3">
           <div class="n">03</div>
           <h3>Run the installer</h3>
-          <p>Enter the address your analysts will open: a DNS name or the server's IP. It must stay the same afterwards.</p>
+          <p>Enter the address your analysts will open: a DNS name or the server's IP. It must remain the same afterwards.</p>
           <div class="field">
             <label for="address">Nightshift address</label>
             <input id="address" type="text" value="https://soc.example.local" spellcheck="false" autocomplete="off">
             <div class="hint" id="address-hint">The command below updates as you type.</div>
           </div>
           <div class="term"><div class="bar"><span>Terminal</span></div><pre data-cmd="install"></pre></div>
-          <p class="note">The installer checks the server, loads the application, generates unique passwords and a certificate, and creates the first administrator. At the end it prints the <strong>temporary administrator password</strong> and the <strong>SIEM connection token</strong>. They are shown only once, so note them.</p>
+          <p class="note">The installer checks the server, loads Nightshift, generates unique passwords and a certificate, and creates the first administrator. The <strong>temporary administrator password</strong> and <strong>SIEM connection token</strong> appear only once, so note them.</p>
         </article>
 
         <article class="step reveal" id="step-4">
           <div class="n">04</div>
           <h3>Sign in and connect your tools</h3>
-          <p>Open the address in a browser and sign in as <code>admin</code> with the temporary password. You choose your own password right away. Then, from the menu:</p>
+          <p>Open the address in a browser and sign in as <code>admin</code> with the temporary password. Set a new password immediately, then configure:</p>
           <ul class="checks">
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><b>Integrations</b>Connect your SIEM and case management, with a built-in guide.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><b>Integrations</b>Connect your SIEM and case-management system with the built-in guide.</span></li>
             <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><b>LLM Settings</b>Choose your AI provider, or a model on your own hardware.</span></li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><b>CTI Configuration</b>Add the keys of the threat-intelligence services you use.</span></li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><b>Users Management</b>Create accounts for your SOC managers and analysts.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><b>CTI Configuration</b>Add the keys for the threat-intelligence services you use.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span><b>Users Management</b>Create accounts for SOC managers and analysts.</span></li>
           </ul>
-          <p class="note">With the certificate the installer generates, browsers show a warning until you install your own certificate (see the installation guide).</p>
+          <p class="note">Browsers will show a warning for the installer-generated certificate until you install your own certificate. See the installation guide for options.</p>
         </article>
       </div>
     </div>
@@ -568,7 +757,7 @@
         <h2 class="reveal d1">New version? <span class="lt">One command.</span></h2>
         <p class="reveal d2">Download the new package as in step 02, then run the upgrade from it.</p>
         <ul class="bul reveal d3">
-          <li>A backup is taken before anything changes.</li>
+          <li>A backup is created before anything changes.</li>
           <li>If the new version does not start correctly, the previous one is restored automatically.</li>
           <li>Settings, accounts and alert history are kept.</li>
         </ul>
@@ -586,9 +775,9 @@
         </div>
       </div>
       <div class="docs">
-        <div class="doc reveal"><div class="f">docs/INSTALL.md</div><h3>Installation</h3><p>Options, your own certificate, reverse proxies and troubleshooting.</p></div>
+        <div class="doc reveal"><div class="f">docs/INSTALL.md</div><h3>Installation</h3><p>Options, certificates, reverse proxies and troubleshooting.</p></div>
         <div class="doc reveal d1"><div class="f">docs/ADMIN.md</div><h3>Administration</h3><p>Everyday commands, users and roles, backups.</p></div>
-        <div class="doc reveal d2"><div class="f">docs/UPGRADE.md</div><h3>Upgrades and restores</h3><p>Upgrading, restoring a backup, moving to a new server.</p></div>
+        <div class="doc reveal d2"><div class="f">docs/UPGRADE.md</div><h3>Upgrades and restores</h3><p>Upgrading, restoring a backup and moving servers.</p></div>
         <div class="doc reveal d3"><div class="f">docs/DATA-FLOWS.md</div><h3>Data flows and security</h3><p>What is sent where, and how it is protected.</p></div>
       </div>
       <p class="docs-note reveal">The guides are in the <code>docs</code> folder of the package.</p>
@@ -599,13 +788,17 @@
     <div class="wrap">
       <div class="box reveal">
         <div>
-          <h2>Ready when <span class="lt">your next alert is.</span></h2>
-          <p>Nightshift 1.0.0 &middot; 520 MB &middot; Linux x86-64</p>
+          <h2>Ready before <span class="lt">your next alert arrives.</span></h2>
+          <p data-kind-full>Download the full offline-capable package for Linux x86-64. It includes the application, installer and documentation. Want to validate the fit first? Talk to BlueSec.</p>
+          <p data-kind-small hidden>Download the package for Linux x86-64. It includes the installer and documentation; the application downloads during installation with your account. Want to validate the fit first? Talk to BlueSec.</p>
+          <p class="meta">Nightshift 1.0.0 &middot; 520 MB</p>
         </div>
         <div class="act">
           <a class="btn light" href="https://github.com/Imad-SH/nightshift-downloads/releases/download/v1.0.0/nightshift-1.0.0.tar.gz" download>Download Nightshift 1.0.0
             <span class="ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 21h14"/></svg></span>
           </a>
+          <a class="talk" href="mailto:sales@bluesec.ma?subject=Nightshift%20product%20enquiry">Talk to BlueSec
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
           <a class="sum" href="https://github.com/Imad-SH/nightshift-downloads/releases/download/v1.0.0/nightshift-1.0.0.tar.gz.sha256" download>SHA-256 checksum file</a>
         </div>
       </div>
@@ -625,6 +818,7 @@
         <h4>Download</h4>
         <ul>
           <li><a href="#product">Product</a></li>
+          <li><a href="#workflow">Workflow</a></li>
           <li><a href="#requirements">Requirements</a></li>
           <li><a href="#install">Installation</a></li>
           <li><a href="#upgrade">Upgrading</a></li>
@@ -655,8 +849,8 @@
   var base = DOWNLOAD_BASE || (/^https?:$/.test(location.protocol) ? new URL('.', location.href).href : 'https://downloads.example.com/nightshift/');
 
   if (PACKAGE === 'small') {
-    document.querySelector('[data-kind-full]').hidden = true;
-    document.querySelector('[data-kind-small]').hidden = false;
+    document.querySelectorAll('[data-kind-full]').forEach(function (el) { el.hidden = true; });
+    document.querySelectorAll('[data-kind-small]').forEach(function (el) { el.hidden = false; });
   }
 
   var commands = {
