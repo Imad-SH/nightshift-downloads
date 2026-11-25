@@ -45,9 +45,8 @@
   p { margin: 0; }
   code { font-family: var(--mono); font-size: 0.86em; color: var(--navy); background: var(--tint); padding: 2px 7px; }
 
-  /* Eyebrow: teal rule + spaced capitals, as on bluesec.ma */
-  .eyebrow { display: inline-flex; align-items: center; gap: 14px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--navy); }
-  .eyebrow::before { content: ""; width: 36px; height: 1.5px; background: var(--teal); }
+  /* Eyebrow: the section's name in spaced capitals */
+  .eyebrow { display: inline-flex; align-items: center; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); }
   .on-dark .eyebrow { color: #fff; }
 
   /* Header */
@@ -120,7 +119,6 @@
   .emblem img { width: 100%; height: auto; filter: drop-shadow(0 26px 40px rgba(3, 7, 30, 0.5)); animation: float 7s ease-in-out infinite; }
   .emblem .name { margin-top: 26px; color: #fff; font-size: 21px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
   .emblem .sub { margin-top: 12px; font: 500 11.5px/1.4 var(--mono); letter-spacing: 0.06em; color: #8f9bc8; }
-  .emblem .sub::before { content: ""; display: block; width: 28px; height: 1.5px; margin: 0 auto 12px; background: var(--teal); }
   @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
   .tag { display: inline-flex; align-items: center; gap: 10px; padding: 8px 13px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.04); font: 500 12px/1 var(--mono); letter-spacing: 0.04em; color: #c9d2f2; }
@@ -350,6 +348,14 @@
 
   .closing p.meta { font: 500 12.5px var(--mono); letter-spacing: 0.04em; color: #c6d2f0; margin-top: 16px; }
   .closing .box > div:first-child p { max-width: 58ch; }
+  /* Second way out: talk to BlueSec before deploying (secondary to the download) */
+  .closing .fit { grid-column: 1 / -1; position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 40px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.16); }
+  .closing .fit p { margin: 0; max-width: 64ch; color: #dbe2f5; }
+  .closing .fit strong { color: #fff; font-weight: 600; }
+  .btn.ghost { background: transparent; color: #fff; box-shadow: none; border: 1px solid rgba(255, 255, 255, 0.55); padding: 14px 20px 14px 24px; flex: none; }
+  .btn.ghost::before { background: rgba(255, 255, 255, 0.12); }
+  .btn.ghost svg { transition: transform 600ms var(--ease); }
+  .btn.ghost:hover svg { transform: translateX(4px); }
 
   /* Entry motion (only when scripts run: content stays visible otherwise) */
   .js .reveal { opacity: 0; transform: translateY(32px); filter: blur(8px); transition: opacity 1100ms var(--ease), transform 1100ms var(--ease), filter 1100ms var(--ease); }
@@ -778,14 +784,20 @@
       <div class="box reveal">
         <div>
           <h2>Ready before <span class="lt">your next alert arrives.</span></h2>
-          <p data-kind-full>Download the full offline-capable package for Linux x86-64. It includes the application, installer and documentation. Want to validate the fit first? Talk to BlueSec.</p>
-          <p data-kind-small hidden>Download the package for Linux x86-64. It includes the installer and documentation; the application downloads during installation with your account. Want to validate the fit first? Talk to BlueSec.</p>
+          <p data-kind-full>Download the full offline-capable package for Linux x86-64. It includes the application, installer and documentation.</p>
+          <p data-kind-small hidden>Download the package for Linux x86-64. It includes the installer and documentation; the application downloads during installation with your account.</p>
           <p class="meta">Nightshift 1.0.0 &middot; 520 MB</p>
         </div>
         <div class="act">
           <a class="btn light" href="https://github.com/Imad-SH/nightshift-downloads/releases/download/v1.0.0/nightshift-1.0.0.tar.gz" download>Download Nightshift 1.0.0
             <span class="ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 21h14"/></svg></span>
-          </a>          <a class="sum" href="https://github.com/Imad-SH/nightshift-downloads/releases/download/v1.0.0/nightshift-1.0.0.tar.gz.sha256" download>SHA-256 checksum file</a>
+          </a>
+          <a class="sum" href="https://github.com/Imad-SH/nightshift-downloads/releases/download/v1.0.0/nightshift-1.0.0.tar.gz.sha256" download>SHA-256 checksum file</a>
+        </div>
+        <div class="fit">
+          <p><strong>Not ready to deploy yet?</strong> Want to confirm that Nightshift fits your SOC workflow, SIEM, and deployment environment?</p>
+          <a class="btn ghost" href="mailto:sales@bluesec.ma?subject=Nightshift%20product%20enquiry">Talk to BlueSec
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
         </div>
       </div>
     </div>
