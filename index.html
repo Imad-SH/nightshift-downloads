@@ -356,6 +356,16 @@
   .btn.ghost::before { background: rgba(255, 255, 255, 0.12); }
   .btn.ghost svg { transition: transform 600ms var(--ease); }
   .btn.ghost:hover svg { transform: translateX(4px); }
+  .closing .talk { display: grid; gap: 10px; justify-items: stretch; flex: none; }
+  .closing .talk .btn.ghost { justify-content: space-between; }
+  /* The address under the button, click to copy it */
+  .closing .mail { display: inline-flex; align-items: center; justify-content: space-between; gap: 14px; cursor: pointer; background: transparent; border: 0; padding: 4px 0; font: inherit; color: #dbe2f5; }
+  .closing .mail .addr { font: 500 14px var(--mono); letter-spacing: 0.01em; }
+  .closing .mail .tag-copy { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: #c6e9e3; opacity: 0.85; transition: opacity 400ms var(--ease); }
+  .closing .mail:hover .tag-copy, .closing .mail.done .tag-copy { opacity: 1; }
+  .closing .mail:hover .addr { color: #fff; }
+  .closing .mail.done .tag-copy { color: #fff; }
+  .closing .mail:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
 
   /* Entry motion (only when scripts run: content stays visible otherwise) */
   .js .reveal { opacity: 0; transform: translateY(32px); filter: blur(8px); transition: opacity 1100ms var(--ease), transform 1100ms var(--ease), filter 1100ms var(--ease); }
@@ -796,8 +806,14 @@
         </div>
         <div class="fit">
           <p><strong>Not ready to deploy yet?</strong> Want to confirm that Nightshift fits your SOC workflow, SIEM, and deployment environment?</p>
-          <a class="btn ghost" href="mailto:sales@bluesec.ma?subject=Nightshift%20product%20enquiry">Talk to BlueSec
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+          <div class="talk">
+            <a class="btn ghost" href="mailto:sales@bluesec.ma?subject=Nightshift%20product%20enquiry">Talk to BlueSec
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+            <button class="mail" type="button" data-copy-mail="sales@bluesec.ma" aria-label="Copy the email address sales@bluesec.ma">
+              <span class="addr">sales@bluesec.ma</span>
+              <span class="tag-copy"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="1.5"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><span class="state">Copy</span></span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -941,6 +957,17 @@
       }, function () { btn.lastChild.textContent = 'Select and copy'; });
     });
     pre.parentNode.querySelector('.bar').appendChild(btn);
+  });
+
+  // The sales address: a mailto link does nothing on a computer without a mail app, so it can also be copied
+  document.querySelectorAll('[data-copy-mail]').forEach(function (btn) {
+    var label = btn.querySelector('.state');
+    btn.addEventListener('click', function () {
+      copyText(btn.getAttribute('data-copy-mail')).then(function () {
+        btn.classList.add('done'); label.textContent = 'Copied';
+        setTimeout(function () { btn.classList.remove('done'); label.textContent = 'Copy'; }, 1800);
+      }, function () { label.textContent = 'Select to copy'; });
+    });
   });
 
   var input = document.getElementById('address');
